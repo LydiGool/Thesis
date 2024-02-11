@@ -1,0 +1,29 @@
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel, QPushButton
+
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Intrusion Detection System")
+        self.setGeometry(100, 100, 400, 200)
+
+        layout = QVBoxLayout()
+
+        self.label = QLabel("Welcome to the Intrusion Detection System")
+        layout.addWidget(self.label)
+
+        self.start_button = QPushButton("Start Intrusion Detection")
+        self.start_button.clicked.connect(self.start_detection)
+        layout.addWidget(self.start_button)
+
+        self.setLayout(layout)
+
+    def start_detection(self):
+        # Add your code here to start intrusion detection using Raspberry Pi
+        self.label.setText("Intrusion Detection Started")
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())
